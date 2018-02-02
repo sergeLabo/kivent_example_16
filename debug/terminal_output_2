@@ -1,4 +1,6 @@
-pierre@PC01:/media/data/3D/projets/kivent/examples/16_svg_phys_objects$ buildozer android clean
+
+
+$ buildozer android clean
 # Check configuration tokens
 # Ensure build layout
 # Check configuration tokens
@@ -6,7 +8,9 @@ pierre@PC01:/media/data/3D/projets/kivent/examples/16_svg_phys_objects$ buildoze
 # Cwd /media/data/3D/projets/kivent/examples/16_svg_phys_objects/.buildozer/android/platform/python-for-android-new-toolchain
 # Run '/usr/bin/python3 -m pythonforandroid.toolchain clean_dists --color=always --storage-dir=/media/data/3D/projets/kivent/examples/16_svg_phys_objects/.buildozer/android/platform/build'
 # Cwd /media/data/3D/projets/kivent/examples/16_svg_phys_objects/.buildozer/android/platform/python-for-android-new-toolchain
-pierre@PC01:/media/data/3D/projets/kivent/examples/16_svg_phys_objects$ buildozer -v android debug
+
+
+$ buildozer -v android debug
 # Check configuration tokens
 # Ensure build layout
 # Check configuration tokens
@@ -277,4 +281,4 @@ b'\x1b[0m\r           working: /usr/bin/ccache arm-linux-androideabi-gcc -DANDRO
 # Please read the full log, and search for it before
 # raising an issue with buildozer itself.
 # In case of a bug report, please add a full log with log_level = 2
-pierre@PC01:/media/data/3D/projets/kivent/examples/16_svg_phys_objects$ 
+$ 
