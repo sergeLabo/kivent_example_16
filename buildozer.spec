@@ -14,7 +14,7 @@ source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
 #source.include_exts = py,png,jpg,kv,atlas,ogg
-source.include_exts = py,svg
+#source.include_exts = py,svg
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = data/*.png, sound/*.ogg
@@ -29,7 +29,7 @@ source.include_exts = py,svg
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.5
+version = 1.5
 
 # (str) Application versioning (method 2)
 # #version.regex = __version__ = ['"](.*)['"]
@@ -37,7 +37,7 @@ version = 0.5
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python3crystax==3.5,sdl2,kivy,cymunk,kivent_core,tmx
+requirements = python3crystax==3.5,kivy,kivent_cymunk,kivent_core
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -53,27 +53,10 @@ requirements = python3crystax==3.5,sdl2,kivy,cymunk,kivent_core,tmx
 #icon.filename = %(source.dir)s/data/multipong.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
-orientation = all
+orientation = portrait
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
-
-#
-# OSX Specific
-#
-
-#
-# author = © Copyright Info
-
-# change the major version of python used by the app
-#osx.python_version = 3
-
-# Kivy version to use
-#osx.kivy_version = 1.9.1
-
-#
-# Android specific
-#
 
 # (bool) Indicate if the application should be fullscreen or not
 fullscreen = 1
@@ -98,16 +81,17 @@ fullscreen = 1
 #android.sdk = 20
 
 # (str) Android NDK version to use
+# avec ou sans donne un warning
 android.ndk = 10.3.2
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-android.ndk_path = /home/pierre/crystax-ndk-10.3.2
+android.ndk_path = /media/data/3D/Documents/crystax-ndk-10.3.2/
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-#android.sdk_path =
+#android.sdk_path = /media/data/3D/Documents/
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
@@ -200,7 +184,7 @@ android.arch = armeabi-v7a
 #p4a.hook =
 
 # (str) Bootstrap to use for android builds
-# p4a.bootstrap = sdl2
+p4a.bootstrap = sdl2
 
 
 #

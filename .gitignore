@@ -14,4 +14,4 @@ bin/
 *.geany
 
 # Bazar
-.old/
+old/

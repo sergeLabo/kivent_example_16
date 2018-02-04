@@ -4,8 +4,15 @@
 
 Directory: kivent/examples/16_svg_phys_objects
 
-### Terminal output
-./debug/terminal_output_2
+### Error
+Terminal output
+error.txt
 
 ### Buildozer.spec
 in .
+
+### Context
+debian 9.2
+python3.5
+kivy from kivy master
+kivent from kivent master
