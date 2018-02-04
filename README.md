@@ -12,7 +12,11 @@ error.txt
 in .
 
 ### Context
+
 debian 9.2
+
 python3.5
+
 kivy from kivy master
+
 kivent from kivent master
