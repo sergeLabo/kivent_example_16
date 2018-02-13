@@ -29,7 +29,7 @@ source.dir = .
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 1.5
+version = 2.0
 
 # (str) Application versioning (method 2)
 # #version.regex = __version__ = ['"](.*)['"]
@@ -37,8 +37,7 @@ version = 1.5
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-# python3crystax==3.5,
-requirements = kivy,kivent_cymunk,kivent_core
+requirements = python3crystax==3.5,kivy,kivent_cymunk,kivent_core
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
