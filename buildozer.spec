@@ -37,7 +37,8 @@ version = 1.5
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = python3crystax==3.5,kivy,kivent_cymunk,kivent_core
+# python3crystax==3.5,
+requirements = kivy,kivent_cymunk,kivent_core
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

@@ -24,17 +24,23 @@ from kivent_core.systems.rotate_systems import RotateSystem2D
 
 from kivent_cymunk.interaction import CymunkTouchSystem
 
-texture_manager.load_atlas(join(dirname(dirname(abspath(__file__))),
-                           'assets', 
-                           'background_objects.atlas'))
+my_dir = join(dirname(abspath(__file__)))
+
+texture_manager.load_atlas(join( my_dir,
+                                'assets', 
+                                'background_objects.atlas'))
 
 
 class TestGame(Widget):
     def __init__(self, **kwargs):
         super(TestGame, self).__init__(**kwargs)
-        self.gameworld.init_gameworld(
-            ['cymunk_physics', 'poly_renderer', 'rotate', 'position',  'cymunk_touch' ],
-            callback=self.init_game)
+        
+        self.gameworld.init_gameworld( [   'cymunk_physics', 
+                                            'poly_renderer', 
+                                            'rotate', 
+                                            'position',  
+                                            'cymunk_touch' ],
+                                        callback=self.init_game)
 
     def init_game(self):
         self.setup_states()
@@ -58,27 +64,26 @@ class TestGame(Widget):
             else:
                 return (li[lenli//2 - 1] + li[lenli//2])/2.0
 
-        #first - calculate (very roughly middle of the object), median
-        xmid = _median([ x['pos'][0] for x in info.vertices.values()])
-        ymid = _median([ x['pos'][1] for x in info.vertices.values()])
+        # Calculate (very roughly middle of the object), median
+        xmid = _median([x['pos'][0] for x in info.vertices.values()])
+        ymid = _median([x['pos'][1] for x in info.vertices.values()])
 
         ret = SVGModelInfo(info.indices,
-                       info.vertices.copy(),
-                       custom_data=info.custom_data,
-                       description=info.description,
-                       element_id=info.element_id,
-                       title=info.title,
-                       path_vertices=info.path_vertices[:]
-                       )
+                           info.vertices.copy(),
+                           custom_data=info.custom_data,
+                           description=info.description,
+                           element_id=info.element_id,
+                           title=info.title,
+                           path_vertices=info.path_vertices[:])
 
-        #now substract it from vertices
+        # Substract it from vertices
         for k in ret.vertices:
             v = ret.vertices[k].copy()
             x, y = v['pos']
             v['pos'] = (x - xmid, y - ymid)
             ret.vertices[k] = v
 
-        #and path vertices
+        # Path vertices
         for i, (x, y) in enumerate(ret.path_vertices):
             ret.path_vertices[i] = (x - xmid, y - ymid)
         
@@ -94,43 +99,40 @@ class TestGame(Widget):
             pos = (randint(0, 200), randint(0, 200))
             #info, pos = self.normalize_info(info)
 
-            Logger.debug("adding object with title/element_id=%s/%s and desc=%s", info.title, info.element_id, info.description)
-            model_name = mm.load_model_from_model_info(info, data['svg_name'])
+            a = "adding object with title/element_id={}/{} and desc={}"
+            Logger.debug(a.format(info.title, 
+                                  info.element_id, 
+                                  info.description))
+                        
+            model_name = mm.load_model_from_model_info(info,
+                                                       data['svg_name'])
 
-            poly_shape = {
-                'shape_type': 'poly',
-                'elasticity': 0.6,
-                'collision_type': 1,
-                'friction': 1.0,
-                'shape_info': {
-                    'mass': 50,
-                    'offset': (0, 0),
-                    'vertices': info.path_vertices
-                }
-
-            }
+            poly_shape = {'shape_type': 'poly',
+                          'elasticity': 0.6,
+                          'collision_type': 1,
+                          'friction': 1.0,
+                          'shape_info': {'mass': 50,
+                                         'offset': (0, 0),
+                                         'vertices': info.path_vertices}}
            
+            physics = { 'main_shape': 'poly',
+                        'velocity': (0, 0),
+                        'position': pos,
+                        'angle': 0,
+                        'angular_velocity': radians(0),
+                        'ang_vel_limit': radians(0),
+                        'mass': 50, 
+                        'col_shapes': [poly_shape]}
 
+            create_dict = {'position': pos,
+                            'poly_renderer': {'model_key': model_name},
+                            'cymunk_physics': physics, 
+                            'rotate': radians(0)}
 
-            physics = {
-                    'main_shape': 'poly',
-                    'velocity': (0, 0),
-                    'position': pos,
-                    'angle': 0,
-                    'angular_velocity': radians(0),
-                    'ang_vel_limit': radians(0),
-                    'mass': 50, 
-                    'col_shapes': [poly_shape]
-            }
-
-            create_dict = {
-                    'position': pos,
-                    'poly_renderer': {'model_key': model_name},
-                    'cymunk_physics': physics, 
-                    'rotate': radians(0),
-            }
-
-            ent = gameworld.init_entity(create_dict, ['position', 'rotate', 'poly_renderer', 'cymunk_physics'])
+            ent = gameworld.init_entity(create_dict, ['position',
+                                                      'rotate',
+                                                      'poly_renderer', 
+                                                      'cymunk_physics'])
             self.app.count += 1
 
     def update(self, dt):
@@ -138,10 +140,11 @@ class TestGame(Widget):
 
     def setup_states(self):
         self.gameworld.add_state(state_name='main', 
-            systems_added=['poly_renderer'],
-            systems_removed=[], systems_paused=[],
-            systems_unpaused=['poly_renderer'],
-            screenmanager_screen='main')
+                                 systems_added=['poly_renderer'],
+                                 systems_removed=[],
+                                 systems_paused=[],
+                                 systems_unpaused=['poly_renderer'],
+                                 screenmanager_screen='main')
 
     def set_state(self):
         self.gameworld.state = 'main'
