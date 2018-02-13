@@ -8,7 +8,6 @@ __pycache__/
 
 # buildozer
 .buildozer/
-bin/
 
 # Geany
 *.geany

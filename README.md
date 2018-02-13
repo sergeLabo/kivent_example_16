@@ -1,22 +1,21 @@
 ## kivent_example_16
 
-### Buildozer and python 3.5 test with kivent example 16
+### Test with kivent example 16
 
 Directory: kivent/examples/16_svg_phys_objects
-
-### Error
-Terminal output
-error.txt
-
-### Buildozer.spec
-in .
 
 ### Context
 
 debian 9.2
 
-python3.5
+### python3.5
 
-kivy from kivy master
+Terminal output with error: python3_compil.txt
 
-kivent from kivent master
+### python2.7
+
+Terminal output with somme error: python2.7_compil.txt
+
+svg_phys-1.5-debug.apk is in /bin
+
+It's work on my phone !
